@@ -50,9 +50,9 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../VSPointer/mainwindow.cpp \
+SOURCES       = ../VSPointer/ventana.cpp \
 		../VSPointer/vspointer.cpp moc_vspointer.cpp
-OBJECTS       = mainwindow.o \
+OBJECTS       = ventana.o \
 		vspointer.o \
 		moc_vspointer.o
 DIST          = ../Qtnew/5.9.9/gcc_64/mkspecs/features/spec_pre.prf \
@@ -236,7 +236,7 @@ DIST          = ../Qtnew/5.9.9/gcc_64/mkspecs/features/spec_pre.prf \
 		../Qtnew/5.9.9/gcc_64/mkspecs/features/yacc.prf \
 		../Qtnew/5.9.9/gcc_64/mkspecs/features/lex.prf \
 		../VSPointer/VSPointer.pro ../VSPointer/VSPointer_global.h \
-		../VSPointer/vspointer.h ../VSPointer/mainwindow.cpp \
+		../VSPointer/vspointer.h ../VSPointer/ventana.cpp \
 		../VSPointer/vspointer.cpp
 QMAKE_TARGET  = VSPointer
 DESTDIR       = 
@@ -251,7 +251,7 @@ TARGET2       = libVSPointer.so.1.0
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h $(OBJECTS) $(SUBLIBS) $(OBJCOMP)  
+$(TARGET): ui_ventana.h $(OBJECTS) $(SUBLIBS) $(OBJCOMP)  
 	-$(DEL_FILE) $(TARGET) $(TARGET0) $(TARGET1) $(TARGET2)
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(LIBS) $(OBJCOMP)
 	-ln -s $(TARGET) $(TARGET0)
@@ -262,7 +262,7 @@ $(TARGET): ui_mainwindow.h $(OBJECTS) $(SUBLIBS) $(OBJCOMP)
 
 staticlib: $(TARGETA)
 
-$(TARGETA): ui_mainwindow.h $(OBJECTS) $(OBJCOMP) 
+$(TARGETA): ui_ventana.h $(OBJECTS) $(OBJCOMP) 
 	-$(DEL_FILE) $(TARGETA) 
 	$(AR) $(TARGETA) $(OBJECTS)
 
@@ -651,8 +651,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Qtnew/5.9.9/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../VSPointer/VSPointer_global.h ../VSPointer/vspointer.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../VSPointer/mainwindow.cpp ../VSPointer/vspointer.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../VSPointer/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../VSPointer/ventana.cpp ../VSPointer/vspointer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../VSPointer/ventana.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -799,12 +799,12 @@ moc_vspointer.cpp: ../VSPointer/VSPointer_global.h \
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_ventana.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
-ui_mainwindow.h: ../VSPointer/mainwindow.ui \
+	-$(DEL_FILE) ui_ventana.h
+ui_ventana.h: ../VSPointer/ventana.ui \
 		../Qtnew/5.9.9/gcc_64/bin/uic
-	/home/guillen00/Qtnew/5.9.9/gcc_64/bin/uic ../VSPointer/mainwindow.ui -o ui_mainwindow.h
+	/home/guillen00/Qtnew/5.9.9/gcc_64/bin/uic ../VSPointer/ventana.ui -o ui_ventana.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -816,7 +816,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-mainwindow.o: ../VSPointer/mainwindow.cpp ../VSPointer/vspointer.h \
+ventana.o: ../VSPointer/ventana.cpp ../VSPointer/vspointer.h \
 		../VSPointer/VSPointer_global.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig-bootstrapped.h \
@@ -952,12 +952,19 @@ mainwindow.o: ../VSPointer/mainwindow.cpp ../VSPointer/vspointer.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qstyle.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtabbar.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qrubberband.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QTableView \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QLabel \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qlabel.h \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QPushButton \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qpushbutton.h \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QTableWidget \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtablewidget.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtableview.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QToolBar \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtoolbar.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QWidget
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../VSPointer/mainwindow.cpp
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QWidget \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/QDebug
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ventana.o ../VSPointer/ventana.cpp
 
 vspointer.o: ../VSPointer/vspointer.cpp ../VSPointer/vspointer.h \
 		../VSPointer/VSPointer_global.h \

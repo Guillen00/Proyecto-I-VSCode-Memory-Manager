@@ -4,12 +4,18 @@
 #include "VSPointer_global.h"
 #include <QMainWindow>
 
+//Clase ejecutora
+
 class VSPOINTER_EXPORT VSPointer
 {
 public:
     VSPointer();
     void maini()  ;
 };
+
+
+
+//Ventana Principal
 
 
 namespace Ui {
@@ -25,8 +31,16 @@ public:
     ~ventana();
     void interfase();
 
+
+private slots:
+    void on_Conectar_clicked();
+
 private:
     Ui::ventana *ui;
 };
 
+
+
 #endif // VSPOINTER_H
+
+

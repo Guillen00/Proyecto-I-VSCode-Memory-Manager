@@ -12,3 +12,11 @@ void VSPointer::maini()  {
 
 }
 
+
+
+
+void ventana::on_Conectar_clicked()
+{
+    qDebug()<<"joder";
+
+}
