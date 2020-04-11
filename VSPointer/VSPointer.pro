@@ -1,8 +1,8 @@
-QT -= gui
+QT += core gui network
 
 TEMPLATE = lib
 DEFINES += VSPOINTER_LIBRARY
-QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -17,11 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    clientesocket.cpp \
+    servidorsocket.cpp \
     ventana.cpp \
     vspointer.cpp
 
 HEADERS += \
     VSPointer_global.h \
+    servidorsocket.h \
     vspointer.h
 
 # Default rules for deployment.
@@ -32,3 +35,4 @@ unix {
 
 FORMS += \
     ventana.ui
+

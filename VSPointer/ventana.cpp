@@ -27,4 +27,9 @@ ventana::~ventana()
     delete ui;
 }
 
+void ventana::on_Conectar_clicked()
+{
+    qDebug()<<ui->lineEdit->text();
 
+
+}
