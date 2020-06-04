@@ -1,8 +1,7 @@
 QT += core gui network
 
-TEMPLATE = lib
-DEFINES += VSPOINTER_LIBRARY
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -17,23 +16,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    clientesocket.cpp \
-    ventana.cpp \
-    vspointer.cpp
+    Serverwindow.cpp \
+    main.cpp \
+    servidorsocket.cpp
 
 HEADERS += \
-    VSPointer_global.h \
-    clientesocket.h \
-    enumeraciones.h \
-    ventana.h \
-    vspointer.h
-
-# Default rules for deployment.
-unix {
-    target.path = /usr/lib
-}
-!isEmpty(target.path): INSTALLS += target
+    Serverwindow.h \
+    enumeraciones1.h \
+    servidorsocket.h
 
 FORMS += \
-    ventana.ui
+    Serverwindow.ui
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-VSPointer-Desktop-Release/release/ -lVSPointer
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-VSPointer-Desktop-Release/debug/ -lVSPointer
+else:unix: LIBS += -L$$PWD/../build-VSPointer-Desktop-Release/ -lVSPointer
+
+INCLUDEPATH += $$PWD/../VSPointer
+DEPENDPATH += $$PWD/../VSPointer
+
 

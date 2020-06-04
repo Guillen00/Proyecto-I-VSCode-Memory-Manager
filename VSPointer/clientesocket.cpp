@@ -1,9 +1,13 @@
-#include <vspointer.h>
+#include  <clientesocket.h>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QDebug>
 
+
+QString mDireccionDelServidor;
+quint16 mPuertoDelServidor;
+bool mConectado;
 
 ClienteSocket::ClienteSocket(QObject *parent) : QTcpSocket { parent }
 {
@@ -41,20 +45,31 @@ void ClienteSocket::enviaMensaje(int enumeracion, const QString &mensaje)
 
 void ClienteSocket::setDireccionDelServidor(const QString &ip)
 {
+
     mDireccionDelServidor = ip;
+    qDebug()<<"paso setdirecciones  "+mDireccionDelServidor;
 }
 
 void ClienteSocket::setPuertoDelServidor(quint16 puerto)
 {
+
     mPuertoDelServidor = puerto;
 }
 
 void ClienteSocket::conectaConElServidor()
 {
+
+
     if (!mConectado)
     {
-        connectToHost(mDireccionDelServidor, mPuertoDelServidor);
+        qDebug()<<mConectado;
+        qDebug()<<mPuertoDelServidor;
+        qDebug()<<mDireccionDelServidor;
+        setProxy(QNetworkProxy::NoProxy);
+
+        connectToHost(mDireccionDelServidor,mPuertoDelServidor);
         mConectado = true;
+        qDebug()<<mConectado;
     }
 }
 
@@ -64,4 +79,11 @@ bool ClienteSocket::setSocketDescriptor(qintptr socketDescriptor,
 {
     mId = QString::number(socketDescriptor);
     return QTcpSocket::setSocketDescriptor(socketDescriptor, state, openMode);
+}
+
+
+void ClienteSocket::ppp(int x){
+    int a=0;
+    a = x;
+    qDebug() <<a;
 }

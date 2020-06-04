@@ -40,6 +40,7 @@ public:
     QLabel *label_5;
     QLabel *label_6;
     QLineEdit *lineEdit_4;
+    QLabel *label_7;
     QToolBar *toolBar;
 
     void setupUi(QMainWindow *ventana)
@@ -98,6 +99,9 @@ public:
         lineEdit_4 = new QLineEdit(centralwidget);
         lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
         lineEdit_4->setGeometry(QRect(1150, 190, 141, 25));
+        label_7 = new QLabel(centralwidget);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(1120, 350, 67, 17));
         ventana->setCentralWidget(centralwidget);
         toolBar = new QToolBar(ventana);
         toolBar->setObjectName(QStringLiteral("toolBar"));
@@ -118,6 +122,7 @@ public:
         label_4->setText(QApplication::translate("ventana", "Direcci\303\263n IP:", Q_NULLPTR));
         label_5->setText(QApplication::translate("ventana", "Contrase\303\261a:", Q_NULLPTR));
         label_6->setText(QApplication::translate("ventana", "Nombre de Usuario:", Q_NULLPTR));
+        label_7->setText(QString());
         toolBar->setWindowTitle(QApplication::translate("ventana", "toolBar", Q_NULLPTR));
     } // retranslateUi
 

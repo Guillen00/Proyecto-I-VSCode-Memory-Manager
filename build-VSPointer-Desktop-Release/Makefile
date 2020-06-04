@@ -51,16 +51,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../VSPointer/clientesocket.cpp \
-		../VSPointer/servidorsocket.cpp \
 		../VSPointer/ventana.cpp \
-		../VSPointer/vspointer.cpp moc_servidorsocket.cpp \
-		moc_vspointer.cpp
+		../VSPointer/vspointer.cpp moc_clientesocket.cpp \
+		moc_ventana.cpp
 OBJECTS       = clientesocket.o \
-		servidorsocket.o \
 		ventana.o \
 		vspointer.o \
-		moc_servidorsocket.o \
-		moc_vspointer.o
+		moc_clientesocket.o \
+		moc_ventana.o
 DIST          = ../Qtnew/5.9.9/gcc_64/mkspecs/features/spec_pre.prf \
 		../Qtnew/5.9.9/gcc_64/mkspecs/common/unix.conf \
 		../Qtnew/5.9.9/gcc_64/mkspecs/common/linux.conf \
@@ -242,9 +240,10 @@ DIST          = ../Qtnew/5.9.9/gcc_64/mkspecs/features/spec_pre.prf \
 		../Qtnew/5.9.9/gcc_64/mkspecs/features/yacc.prf \
 		../Qtnew/5.9.9/gcc_64/mkspecs/features/lex.prf \
 		../VSPointer/VSPointer.pro ../VSPointer/VSPointer_global.h \
-		../VSPointer/servidorsocket.h \
+		../VSPointer/clientesocket.h \
+		../VSPointer/enumeraciones.h \
+		../VSPointer/ventana.h \
 		../VSPointer/vspointer.h ../VSPointer/clientesocket.cpp \
-		../VSPointer/servidorsocket.cpp \
 		../VSPointer/ventana.cpp \
 		../VSPointer/vspointer.cpp
 QMAKE_TARGET  = VSPointer
@@ -661,8 +660,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Qtnew/5.9.9/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../VSPointer/VSPointer_global.h ../VSPointer/servidorsocket.h ../VSPointer/vspointer.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../VSPointer/clientesocket.cpp ../VSPointer/servidorsocket.cpp ../VSPointer/ventana.cpp ../VSPointer/vspointer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../VSPointer/VSPointer_global.h ../VSPointer/clientesocket.h ../VSPointer/enumeraciones.h ../VSPointer/ventana.h ../VSPointer/vspointer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../VSPointer/clientesocket.cpp ../VSPointer/ventana.cpp ../VSPointer/vspointer.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../VSPointer/ventana.ui $(DISTDIR)/
 
 
@@ -696,10 +695,13 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../Qtnew/5.9.9/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h ../Qtnew/5.9.9/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_servidorsocket.cpp moc_vspointer.cpp
+compiler_moc_header_make_all: moc_clientesocket.cpp moc_ventana.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_servidorsocket.cpp moc_vspointer.cpp
-moc_servidorsocket.cpp: ../VSPointer/VSPointer_global.h \
+	-$(DEL_FILE) moc_clientesocket.cpp moc_ventana.cpp
+moc_clientesocket.cpp: ../Qtnew/5.9.9/gcc_64/include/QtNetwork/QSctpSocket \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qsctpsocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig.h \
@@ -721,9 +723,9 @@ moc_servidorsocket.cpp: ../VSPointer/VSPointer_global.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qmutex.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qnumeric.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qversiontagging.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtcpserver.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qiodevice.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qobject.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qobjectdefs.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qnamespace.h \
@@ -749,8 +751,6 @@ moc_servidorsocket.cpp: ../VSPointer/VSPointer_global.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qvarlengtharray.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qcontainerfwd.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qobject_impl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qabstractsocket.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qiodevice.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qdebug.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qhash.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qmap.h \
@@ -764,13 +764,17 @@ moc_servidorsocket.cpp: ../VSPointer/VSPointer_global.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qcontiguouscache.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qnetworkdatagram.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qhostaddress.h \
-		../VSPointer/servidorsocket.h \
+		../VSPointer/clientesocket.h \
 		moc_predefs.h \
 		../Qtnew/5.9.9/gcc_64/bin/moc
-	/home/guillen00/Qtnew/5.9.9/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/guillen00/Qtnew/5.9.9/gcc_64/mkspecs/linux-g++ -I/home/guillen00/VSPointer -I/home/guillen00/Qtnew/5.9.9/gcc_64/include -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtWidgets -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtGui -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtNetwork -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../VSPointer/servidorsocket.h -o moc_servidorsocket.cpp
+	/home/guillen00/Qtnew/5.9.9/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/guillen00/Qtnew/5.9.9/gcc_64/mkspecs/linux-g++ -I/home/guillen00/VSPointer -I/home/guillen00/Qtnew/5.9.9/gcc_64/include -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtWidgets -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtGui -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtNetwork -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../VSPointer/clientesocket.h -o moc_clientesocket.cpp
 
-moc_vspointer.cpp: ../VSPointer/VSPointer_global.h \
+moc_ventana.cpp: ../Qtnew/5.9.9/gcc_64/include/QtWidgets/QMainWindow \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qmainwindow.h \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qtguiglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig.h \
@@ -792,10 +796,6 @@ moc_vspointer.cpp: ../VSPointer/VSPointer_global.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qmutex.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qnumeric.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qversiontagging.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QMainWindow \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qmainwindow.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtguiglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtGui/qtgui-config.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgets-config.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qwidget.h \
@@ -874,15 +874,19 @@ moc_vspointer.cpp: ../VSPointer/VSPointer_global.h \
 		../Qtnew/5.9.9/gcc_64/include/QtGui/qtouchdevice.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtabwidget.h \
 		../Qtnew/5.9.9/gcc_64/include/QtGui/qicon.h \
+		../VSPointer/clientesocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/QSctpSocket \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qsctpsocket.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtcpsocket.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qabstractsocket.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/QTcpSocket \
-		../VSPointer/vspointer.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qnetworkdatagram.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qhostaddress.h \
+		../VSPointer/ventana.h \
 		moc_predefs.h \
 		../Qtnew/5.9.9/gcc_64/bin/moc
-	/home/guillen00/Qtnew/5.9.9/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/guillen00/Qtnew/5.9.9/gcc_64/mkspecs/linux-g++ -I/home/guillen00/VSPointer -I/home/guillen00/Qtnew/5.9.9/gcc_64/include -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtWidgets -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtGui -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtNetwork -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../VSPointer/vspointer.h -o moc_vspointer.cpp
+	/home/guillen00/Qtnew/5.9.9/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/guillen00/Qtnew/5.9.9/gcc_64/mkspecs/linux-g++ -I/home/guillen00/VSPointer -I/home/guillen00/Qtnew/5.9.9/gcc_64/include -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtWidgets -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtGui -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtNetwork -I/home/guillen00/Qtnew/5.9.9/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../VSPointer/ventana.h -o moc_ventana.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -903,8 +907,11 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-clientesocket.o: ../VSPointer/clientesocket.cpp ../VSPointer/vspointer.h \
-		../VSPointer/VSPointer_global.h \
+clientesocket.o: ../VSPointer/clientesocket.cpp ../VSPointer/clientesocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/QSctpSocket \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qsctpsocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig.h \
@@ -926,19 +933,13 @@ clientesocket.o: ../VSPointer/clientesocket.cpp ../VSPointer/vspointer.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qmutex.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qnumeric.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qversiontagging.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QMainWindow \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qmainwindow.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtguiglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtgui-config.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qwidget.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qwindowdefs.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qiodevice.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qobject.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qobjectdefs.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qnamespace.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qobject.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qstring.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qchar.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qbytearray.h \
@@ -960,59 +961,21 @@ clientesocket.o: ../VSPointer/clientesocket.cpp ../VSPointer/vspointer.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qvarlengtharray.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qcontainerfwd.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qobject_impl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qmargins.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpaintdevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qrect.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsize.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qpoint.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpalette.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qcolor.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qrgb.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qrgba64.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qbrush.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qvector.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qmatrix.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpolygon.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qregion.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qdatastream.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qiodevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qline.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtransform.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpainterpath.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qimage.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpixelformat.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpixmap.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qshareddata.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qhash.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qfont.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qfontmetrics.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qfontinfo.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qcursor.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qkeysequence.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qevent.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qvariant.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qmap.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qdebug.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qhash.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qmap.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qtextstream.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qlocale.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qvariant.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qshareddata.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qvector.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qpoint.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qset.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qcontiguouscache.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qurl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qurlquery.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qfile.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qfiledevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qvector2d.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtouchdevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtabwidget.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qicon.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtcpsocket.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qabstractsocket.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/QTcpSocket \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qnetworkdatagram.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qhostaddress.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/QJsonDocument \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qjsondocument.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qjsonvalue.h \
@@ -1022,8 +985,11 @@ clientesocket.o: ../VSPointer/clientesocket.cpp ../VSPointer/vspointer.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o clientesocket.o ../VSPointer/clientesocket.cpp
 
-servidorsocket.o: ../VSPointer/servidorsocket.cpp ../VSPointer/servidorsocket.h \
-		../VSPointer/VSPointer_global.h \
+ventana.o: ../VSPointer/ventana.cpp ../VSPointer/ventana.h \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QMainWindow \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qmainwindow.h \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qtguiglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig.h \
@@ -1045,13 +1011,15 @@ servidorsocket.o: ../VSPointer/servidorsocket.cpp ../VSPointer/servidorsocket.h 
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qmutex.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qnumeric.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qversiontagging.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtcpserver.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qobject.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qtgui-config.h \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qwidget.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qwindowdefs.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qobjectdefs.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qnamespace.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qobject.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qstring.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qchar.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qbytearray.h \
@@ -1073,180 +1041,63 @@ servidorsocket.o: ../VSPointer/servidorsocket.cpp ../VSPointer/servidorsocket.h 
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qvarlengtharray.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qcontainerfwd.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qobject_impl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qmargins.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qpaintdevice.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qrect.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qsize.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qpoint.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qpalette.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qcolor.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qrgb.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qrgba64.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qbrush.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qvector.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qmatrix.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qpolygon.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qregion.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qdatastream.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qiodevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qdebug.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qline.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qtransform.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qpainterpath.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qimage.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qpixelformat.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qpixmap.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qshareddata.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qhash.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qfont.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qfontmetrics.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qfontinfo.h \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qcursor.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qkeysequence.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qevent.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qvariant.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qmap.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qdebug.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qtextstream.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qlocale.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qvariant.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qshareddata.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qvector.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qpoint.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qset.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/qcontiguouscache.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qurl.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qurlquery.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qfile.h \
+		../Qtnew/5.9.9/gcc_64/include/QtCore/qfiledevice.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qvector2d.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qtouchdevice.h \
+		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtabwidget.h \
+		../Qtnew/5.9.9/gcc_64/include/QtGui/qicon.h \
+		../VSPointer/clientesocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/QSctpSocket \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qsctpsocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qnetworkdatagram.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qhostaddress.h \
-		../VSPointer/vspointer.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QMainWindow \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qmainwindow.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtguiglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtgui-config.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qwidget.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qwindowdefs.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qmargins.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpaintdevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qrect.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsize.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpalette.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qcolor.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qrgb.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qrgba64.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qbrush.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qmatrix.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpolygon.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qregion.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qdatastream.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qline.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtransform.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpainterpath.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qimage.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpixelformat.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpixmap.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qfont.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qfontmetrics.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qfontinfo.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qcursor.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qkeysequence.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qevent.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qurl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qurlquery.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qfile.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qfiledevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qvector2d.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtouchdevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtabwidget.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qicon.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtcpsocket.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/QTcpSocket
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o servidorsocket.o ../VSPointer/servidorsocket.cpp
-
-ventana.o: ../VSPointer/ventana.cpp ../VSPointer/vspointer.h \
-		../VSPointer/VSPointer_global.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qconfig.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qtcore-config.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsystemdetection.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qprocessordetection.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qcompilerdetection.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qtypeinfo.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsysinfo.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qlogging.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qflags.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qatomic.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qbasicatomic.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qgenericatomic.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qatomic_msvc.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qglobalstatic.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qmutex.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qnumeric.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qversiontagging.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QMainWindow \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qmainwindow.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtguiglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtgui-config.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qwidget.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qwindowdefs.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qobjectdefs.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qnamespace.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qobject.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qstring.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qchar.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qbytearray.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qrefcount.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qarraydata.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qstringbuilder.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qlist.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qalgorithms.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qiterator.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qhashfunctions.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qpair.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qbytearraylist.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qstringlist.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qregexp.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qstringmatcher.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qcoreevent.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qscopedpointer.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qmetatype.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qvarlengtharray.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qcontainerfwd.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qobject_impl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qmargins.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpaintdevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qrect.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsize.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qpoint.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpalette.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qcolor.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qrgb.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qrgba64.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qbrush.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qvector.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qmatrix.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpolygon.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qregion.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qdatastream.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qiodevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qline.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtransform.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpainterpath.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qimage.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpixelformat.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qpixmap.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qshareddata.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qhash.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qfont.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qfontmetrics.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qfontinfo.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qcursor.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qkeysequence.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qevent.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qvariant.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qmap.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qdebug.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qtextstream.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qlocale.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qset.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qcontiguouscache.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qurl.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qurlquery.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qfile.h \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/qfiledevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qvector2d.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qtouchdevice.h \
-		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtabwidget.h \
-		../Qtnew/5.9.9/gcc_64/include/QtGui/qicon.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtcpsocket.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qabstractsocket.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/QTcpSocket \
 		ui_ventana.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/QVariant \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QAction \
@@ -1295,7 +1146,8 @@ ventana.o: ../VSPointer/ventana.cpp ../VSPointer/vspointer.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QToolBar \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtoolbar.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/QWidget \
-		../Qtnew/5.9.9/gcc_64/include/QtCore/QDebug
+		../Qtnew/5.9.9/gcc_64/include/QtCore/QDebug \
+		../VSPointer/enumeraciones.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ventana.o ../VSPointer/ventana.cpp
 
 vspointer.o: ../VSPointer/vspointer.cpp ../VSPointer/vspointer.h \
@@ -1403,19 +1255,24 @@ vspointer.o: ../VSPointer/vspointer.cpp ../VSPointer/vspointer.h \
 		../Qtnew/5.9.9/gcc_64/include/QtGui/qtouchdevice.h \
 		../Qtnew/5.9.9/gcc_64/include/QtWidgets/qtabwidget.h \
 		../Qtnew/5.9.9/gcc_64/include/QtGui/qicon.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/QSctpSocket \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qsctpsocket.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtcpsocket.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qabstractsocket.h \
-		../Qtnew/5.9.9/gcc_64/include/QtNetwork/QTcpSocket \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qnetworkdatagram.h \
+		../Qtnew/5.9.9/gcc_64/include/QtNetwork/qhostaddress.h \
+		../VSPointer/ventana.h \
+		../VSPointer/clientesocket.h \
 		../Qtnew/5.9.9/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vspointer.o ../VSPointer/vspointer.cpp
 
-moc_servidorsocket.o: moc_servidorsocket.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_servidorsocket.o moc_servidorsocket.cpp
+moc_clientesocket.o: moc_clientesocket.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_clientesocket.o moc_clientesocket.cpp
 
-moc_vspointer.o: moc_vspointer.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_vspointer.o moc_vspointer.cpp
+moc_ventana.o: moc_ventana.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ventana.o moc_ventana.cpp
 
 ####### Install
 
