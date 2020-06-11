@@ -27,6 +27,8 @@ protected:
 private slots:
     void on_Conectar_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::ventana *ui;
 

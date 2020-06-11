@@ -71,7 +71,7 @@ ClienteSocket *ventana::makeSocket()
         (void) socket;
         if (enumeracion == InfoResponse)
         {
-           ui->label_7->setText(mensaje);
+           
         }
     });
 

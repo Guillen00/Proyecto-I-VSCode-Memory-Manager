@@ -1,5 +1,4 @@
 #include "servidorsocket.h"
-#include "vspointer.h"
 
 
 ServidorSocket::ServidorSocket(QObject *parent) : QTcpServer { parent }

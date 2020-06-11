@@ -3,6 +3,7 @@
 
 #include "VSPointer_global.h"
 #include <QtNetwork/QSctpSocket>
+#include <QAbstractSocket>
 #include "ventana.h"
 #include "clientesocket.h"
 

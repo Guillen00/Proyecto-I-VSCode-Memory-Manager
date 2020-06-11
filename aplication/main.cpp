@@ -6,9 +6,9 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    //Serverwindow yiyi;
+    Serverwindow yiyi;
     ventana ven;
-    //yiyi.show();
+    yiyi.show();
     ven.show();
     return a.exec();
 }

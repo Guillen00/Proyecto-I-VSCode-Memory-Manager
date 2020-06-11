@@ -1,8 +1,9 @@
-#ifndef CLIENTESOCKET_H
+﻿#ifndef CLIENTESOCKET_H
 #define CLIENTESOCKET_H
 
 #include <QTcpSocket>
-#include <QNetworkProxy>
+
+
 class ClienteSocket : public QTcpSocket
 {
     Q_OBJECT
@@ -22,7 +23,7 @@ public:
 signals:
     void mensajeRecibido(int enumeracion, const QString &mensaje, ClienteSocket *socket);
     void desconectado(ClienteSocket *socket);
-public:
+private:
     //QString mDireccionDelServidor;
     //quint16 mPuertoDelServidor;
     //bool mConectado;

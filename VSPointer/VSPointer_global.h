@@ -2,6 +2,7 @@
 #define VSPOINTER_GLOBAL_H
 
 #include <QtCore/qglobal.h>
+#include <QtNetwork/QSctpSocket>
 
 #if defined(VSPOINTER_LIBRARY)
 #  define VSPOINTER_EXPORT Q_DECL_EXPORT
