@@ -2,7 +2,7 @@
 #include "ui_Serverwindow.h"
 #include "servidorsocket.h"
 #include "enumeraciones1.h"
-#include <vspointer.h>
+#include <VSPtr.h>
 
 Serverwindow::Serverwindow(QWidget *parent) :
     QMainWindow(parent),
@@ -53,7 +53,7 @@ ServidorSocket *Serverwindow::makeServidor()
         if (enumeracion == InfoQuery)
         {
             ui->label_2->setText(mensaje);
-
+            mServidorSocket->PASSWORD= mensaje;
 
         }
 

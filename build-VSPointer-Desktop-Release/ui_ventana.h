@@ -41,6 +41,8 @@ public:
     QLabel *label_6;
     QLineEdit *lineEdit_4;
     QLabel *label_7;
+    QPushButton *pushButton;
+    QLabel *label_8;
     QToolBar *toolBar;
 
     void setupUi(QMainWindow *ventana)
@@ -101,7 +103,13 @@ public:
         lineEdit_4->setGeometry(QRect(1150, 190, 141, 25));
         label_7 = new QLabel(centralwidget);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(1120, 350, 67, 17));
+        label_7->setGeometry(QRect(1016, 350, 271, 20));
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(1070, 520, 89, 25));
+        label_8 = new QLabel(centralwidget);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(1070, 570, 67, 17));
         ventana->setCentralWidget(centralwidget);
         toolBar = new QToolBar(ventana);
         toolBar->setObjectName(QStringLiteral("toolBar"));
@@ -123,6 +131,8 @@ public:
         label_5->setText(QApplication::translate("ventana", "Contrase\303\261a:", Q_NULLPTR));
         label_6->setText(QApplication::translate("ventana", "Nombre de Usuario:", Q_NULLPTR));
         label_7->setText(QString());
+        pushButton->setText(QApplication::translate("ventana", "PushButton", Q_NULLPTR));
+        label_8->setText(QApplication::translate("ventana", "TextLabel", Q_NULLPTR));
         toolBar->setWindowTitle(QApplication::translate("ventana", "toolBar", Q_NULLPTR));
     } // retranslateUi
 

@@ -1,7 +1,7 @@
 #ifndef SERVIDORSOCKET_H
 #define SERVIDORSOCKET_H
 
-#include"vspointer.h"
+#include"VSPtr.h"
 #include <QtNetwork/QSctpServer>
 
 //#include "qtcpserver.h"
@@ -19,10 +19,13 @@ public:
     void enviaMensaje(int enumeracion, const QString &mensaje, ClienteSocket *cliente);
     void eliminaCliente(ClienteSocket *socket);
     void desconectaClientes();
+    QString PASSWORD;
+    QString PASSWORDserver;
 signals:
     void mensajeRecibido(int enumeracion, const QString &mensaje, ClienteSocket *socket);
     void clienteConectado(ClienteSocket *socket);
     void clienteDesconectado(ClienteSocket *socket);
+
 protected:
     void incomingConnection(qintptr handle) override;
 private:
@@ -30,6 +33,7 @@ private:
     QList<ClienteSocket *> mClientes;
     ClienteSocket *makeCliente(qintptr handle);
     bool mEscuchando;
+
 
 };
 

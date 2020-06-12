@@ -68,6 +68,7 @@ void ClienteSocket::conectaConElServidor()
         qDebug()<<mDireccionDelServidor;
 
         connectToHost(mDireccionDelServidor,mPuertoDelServidor);
+
         mConectado = true;
         qDebug()<<mConectado;
     }

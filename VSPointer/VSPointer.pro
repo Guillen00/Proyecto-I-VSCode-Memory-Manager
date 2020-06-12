@@ -1,7 +1,7 @@
 QT += core gui network
 
 TEMPLATE = lib
-DEFINES += VSPOINTER_LIBRARY
+DEFINES += VSPtr_LIBRARY
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++11
 
@@ -17,16 +17,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    GarbageCollector.cpp \
+    Node.cpp \
+    VSPtr.cpp \
     clientesocket.cpp \
-    ventana.cpp \
-    vspointer.cpp
+    linkedlist.cpp \
+    ventana.cpp
 
 HEADERS += \
-    VSPointer_global.h \
+    GarbageCollector.h \
+    Node.h \
+    Structs.h \
+    VSPtr.h \
+    VSPtr_global.h \
     clientesocket.h \
     enumeraciones.h \
-    ventana.h \
-    vspointer.h
+    linkedlist.h \
+    ventana.h
 
 # Default rules for deployment.
 unix {

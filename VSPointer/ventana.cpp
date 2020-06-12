@@ -13,6 +13,7 @@ ventana::ventana(QWidget *parent) :
     ui->setupUi(this);
     mClienteSocket = makeSocket();
     ui->tableWidget->setColumnCount(5);
+    Password="montealto";
     QStringList NAMES;
     NAMES<<"Nombre de Variable"<<"Tipo"<<"Contenido"<<"Referencias"<<"Dirección de Memoria";
     ui->tableWidget->setHorizontalHeaderLabels(NAMES);
@@ -38,27 +39,43 @@ void ventana::closeEvent(QCloseEvent *event){
 
 void ventana::on_Conectar_clicked()
 {
-    qDebug()<<ui->lineEdit->text();
-    QString ipServidor = ui->lineEdit->text();
-    quint16 puertoServidor = quint16(ui->lineEdit_2->text().toUInt());
 
-    if (ipServidor.isEmpty())
-    {
-        return;
+    if(Passwordconvert(Password)==Passwordconvert(ui->lineEdit_3->text())){
+
+        qDebug()<<ui->lineEdit->text();
+        QString ipServidor = ui->lineEdit->text();
+        quint16 puertoServidor = quint16(ui->lineEdit_2->text().toUInt());
+
+        if (ipServidor.isEmpty())
+        {
+            return;
+        }
+        if (puertoServidor == 0)
+        {
+            return;
+        }
+        mClienteSocket->ppp(8);
+        qDebug()<<"paso la primera";
+        mClienteSocket->setDireccionDelServidor(ipServidor);
+        qDebug()<<"paso la segunda";
+        mClienteSocket->setPuertoDelServidor(puertoServidor);
+        qDebug()<<"paso la tercera";
+        mClienteSocket->conectaConElServidor();
+        ui->Conectar->setText("Conectado");
+        qDebug()<<"paso la final";
+        ui->label_7->setText("Conexión exitosa");
+
+        mClienteSocket->enviaMensaje(InfoQuery, ui->lineEdit_3->text());
     }
-    if (puertoServidor == 0)
-    {
-        return;
+    else{
+        ui->label_7->setText("La contraseña es incorrecta");
     }
-    mClienteSocket->ppp(8);
-    qDebug()<<"paso la primera";
-    mClienteSocket->setDireccionDelServidor(ipServidor);
-    qDebug()<<"paso la segunda";
-    mClienteSocket->setPuertoDelServidor(puertoServidor);
-    qDebug()<<"paso la tercera";
-    mClienteSocket->conectaConElServidor();
-    ui->Conectar->setText("Conectado");
-    qDebug()<<"paso la final";
+
+
+
+
+
+
 }
 
 ClienteSocket *ventana::makeSocket()
@@ -71,7 +88,7 @@ ClienteSocket *ventana::makeSocket()
         (void) socket;
         if (enumeracion == InfoResponse)
         {
-           ui->label_7->setText(mensaje);
+
         }
     });
 
@@ -81,13 +98,13 @@ ClienteSocket *ventana::makeSocket()
 
 void ventana::on_pushButton_clicked()
 {
-    mClienteSocket->enviaMensaje(InfoQuery, "Listo funciona");
 
+
+}
+QString ventana::Passwordconvert(QString password){
     QCryptographicHash Passwordmd5 (QCryptographicHash::Md5);
     QByteArray input;
-    input.append(ui->lineEdit_3->text());
+    input.append(password);
     Passwordmd5.addData(input);
-    ui->label_8->setText(Passwordmd5.result().toHex());
-
-
+    return Passwordmd5.result().toHex();
 }

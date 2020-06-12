@@ -20,7 +20,9 @@ public:
     void interfase();
     ClienteSocket *mClienteSocket;
     ClienteSocket *makeSocket();
-
+    QString Password;
+    QString NewPassword;
+    QString Passwordconvert(QString password);
 
 protected:
     void closeEvent(QCloseEvent *event) override;

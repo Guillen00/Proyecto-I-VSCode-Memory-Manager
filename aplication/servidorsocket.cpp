@@ -1,11 +1,11 @@
 #include "servidorsocket.h"
-#include "vspointer.h"
-
+#include "VSPtr.h"
 
 ServidorSocket::ServidorSocket(QObject *parent) : QTcpServer { parent }
 {
     mPuerto = 0;
     mEscuchando = false;
+
 }
 
 ServidorSocket::~ServidorSocket()
@@ -15,9 +15,14 @@ ServidorSocket::~ServidorSocket()
 
 void ServidorSocket::inicia()
 {
+
+
+
     if (!mEscuchando)
     {
         mEscuchando = listen(QHostAddress::Any, mPuerto);
+
+
     }
 }
 
