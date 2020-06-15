@@ -76,7 +76,6 @@ void ventana::on_Conectar_clicked()
         {
             return;
         }
-        mClienteSocket->ppp(8);
         qDebug()<<"paso la primera";
         mClienteSocket->setDireccionDelServidor(ipServidor);
         qDebug()<<"paso la segunda";

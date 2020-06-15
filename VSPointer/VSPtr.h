@@ -16,6 +16,12 @@
 #include <iostream>
 using namespace std;
 
+/**@Leonardo_JuanPablo
+  *@data 15/06/2020
+  *@brief Descripción: A continuación se describe la clase VSPtr la cual es  objeto con el que manejaremos datos 
+  * de tipo t
+  */
+
 template <class T>
 class VSPtr_EXPORT VSPtr
 {

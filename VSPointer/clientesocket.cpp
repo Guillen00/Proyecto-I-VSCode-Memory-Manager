@@ -83,8 +83,3 @@ bool ClienteSocket::setSocketDescriptor(qintptr socketDescriptor,
 }
 
 
-void ClienteSocket::ppp(int x){
-    int a=0;
-    a = x;
-    qDebug() <<a;
-}
