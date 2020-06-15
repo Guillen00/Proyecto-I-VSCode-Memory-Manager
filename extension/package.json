@@ -1,0 +1,56 @@
+{
+	"name": "vspointer-cg-",
+	"publisher": "guillen00",
+	"displayName": "VSPointer(CG)",
+	"icon": "images/vs.png",
+	"author": "Guillen00",
+	"description": "Una extension que muestra el manejo de memoria y el comportamiento de las variables que se utilizan en el momento además tiene la posibilidad de conectar a un servidor el cual guardará y manejará los datos sin la necesidad de usar memoria del equipo.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.46.0"
+	},
+	
+	"repository": {
+
+        "type": "git",
+    
+        "url": "https://github.com/Guillen00/Proyecto-I-VSCode-Memory-Manager.git"
+    
+        },
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:vspointer-cg-.helloWorld",
+		"onCommand:vspointer-cg-.runvs"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "vspointer-cg-.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"command": "vspointer-cg-.runvs",
+				"title": "RUNVS"	
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.46.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	}
+}
