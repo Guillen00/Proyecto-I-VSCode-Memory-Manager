@@ -1,0 +1,256 @@
+\hypertarget{class_v_s_ptr}{}\section{V\+S\+Ptr$<$ T $>$ Class Template Reference}
+\label{class_v_s_ptr}\index{V\+S\+Ptr$<$ T $>$@{V\+S\+Ptr$<$ T $>$}}
+
+
+Descripción\+: A continuación se describe la clase \hyperlink{class_v_s_ptr}{V\+S\+Ptr} la cual es objeto con el que manejaremos datos de tipo t.  
+
+
+
+
+{\ttfamily \#include $<$V\+S\+Ptr.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_v_s_ptr_a3f9256a7afba8e671e188c87103b4570}{V\+S\+Ptr} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de la clase \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. \end{DoxyCompactList}\item 
+\hyperlink{class_v_s_ptr_a3868ebe6b47b27b0e1397a75407d08f8}{$\sim$\+V\+S\+Ptr} ()
+\begin{DoxyCompactList}\small\item\em Destructor de objetos \hyperlink{class_v_s_ptr}{V\+S\+Ptr} para administrar la correcta eliminación de la memoria utilizada. \end{DoxyCompactList}\item 
+void \hyperlink{class_v_s_ptr_aeef7dd00463ef98da0e338dae756b4d5}{start} ()
+\begin{DoxyCompactList}\small\item\em Inicializa el \hyperlink{class_v_s_ptr}{V\+S\+Ptr}, luego envía la refencia que se le ha asignado y tambien la del puntero ptr\+\_\+in al Garbage Collector. \end{DoxyCompactList}\item 
+void \hyperlink{class_v_s_ptr_ae1cdd73e2116e115149e517b4045b7f9}{operator=} (T data)
+\begin{DoxyCompactList}\small\item\em Sobrecarga el operador = y le asigna data a la dirección de memoria a la que esta apuntando el puntero ptr\+\_\+in. \end{DoxyCompactList}\item 
+void \hyperlink{class_v_s_ptr_aa27d1b845423f19aa9403bdd56586ab9}{operator=} (\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ $\ast$ptr)
+\begin{DoxyCompactList}\small\item\em Le asigna la direccion de memoria a la que apunta un puntero al segundo puntero. \end{DoxyCompactList}\item 
+T \hyperlink{class_v_s_ptr_a7d3b2ef1c0ef66d6d3f70cfd39549515}{operator\&} ()
+\begin{DoxyCompactList}\small\item\em Método que sobrecarga el operador \& para lograr acceder al valor almacenado en el objeto \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. \end{DoxyCompactList}\item 
+\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ \hyperlink{class_v_s_ptr_a99bd5070f565cc570d55b441c6d78bda}{operator$\ast$} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el mismo \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. \end{DoxyCompactList}\item 
+int \hyperlink{class_v_s_ptr_a915f6d6fd3c35bd6409b21f62284087e}{obtenref\+ID} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el ID que se le ha asignado al puntero. \end{DoxyCompactList}\item 
+void \hyperlink{class_v_s_ptr_a8bce3297cb819c3f35e24d7ef921539f}{info} ()
+\begin{DoxyCompactList}\small\item\em Muestra datos del \hyperlink{class_v_s_ptr}{V\+S\+Ptr} y su puntero interno. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ \hyperlink{class_v_s_ptr_a4dbf1c0d3ac694fef78baa8d15ec7eb1}{New} ()
+\begin{DoxyCompactList}\small\item\em Método que genera las instancias de los objetos \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class V\+S\+Ptr$<$ T $>$}
+
+Descripción\+: A continuación se describe la clase \hyperlink{class_v_s_ptr}{V\+S\+Ptr} la cual es objeto con el que manejaremos datos de tipo t. 
+
+15/06/2020 
+
+Definition at line 26 of file V\+S\+Ptr.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_v_s_ptr_a3f9256a7afba8e671e188c87103b4570}\label{class_v_s_ptr_a3f9256a7afba8e671e188c87103b4570}} 
+\index{V\+S\+Ptr@{V\+S\+Ptr}!V\+S\+Ptr@{V\+S\+Ptr}}
+\index{V\+S\+Ptr@{V\+S\+Ptr}!V\+S\+Ptr@{V\+S\+Ptr}}
+\subsubsection{\texorpdfstring{V\+S\+Ptr()}{VSPtr()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$\+::\hyperlink{class_v_s_ptr}{V\+S\+Ptr} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor por defecto de la clase \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. 
+
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 16 of file V\+S\+Ptr.\+cpp.
+
+\mbox{\Hypertarget{class_v_s_ptr_a3868ebe6b47b27b0e1397a75407d08f8}\label{class_v_s_ptr_a3868ebe6b47b27b0e1397a75407d08f8}} 
+\index{V\+S\+Ptr@{V\+S\+Ptr}!````~V\+S\+Ptr@{$\sim$\+V\+S\+Ptr}}
+\index{````~V\+S\+Ptr@{$\sim$\+V\+S\+Ptr}!V\+S\+Ptr@{V\+S\+Ptr}}
+\subsubsection{\texorpdfstring{$\sim$\+V\+S\+Ptr()}{~VSPtr()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$\+::$\sim$\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor de objetos \hyperlink{class_v_s_ptr}{V\+S\+Ptr} para administrar la correcta eliminación de la memoria utilizada. 
+
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 34 of file V\+S\+Ptr.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_v_s_ptr_a8bce3297cb819c3f35e24d7ef921539f}\label{class_v_s_ptr_a8bce3297cb819c3f35e24d7ef921539f}} 
+\index{V\+S\+Ptr@{V\+S\+Ptr}!info@{info}}
+\index{info@{info}!V\+S\+Ptr@{V\+S\+Ptr}}
+\subsubsection{\texorpdfstring{info()}{info()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$\+::info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Muestra datos del \hyperlink{class_v_s_ptr}{V\+S\+Ptr} y su puntero interno. 
+
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 94 of file V\+S\+Ptr.\+cpp.
+
+\mbox{\Hypertarget{class_v_s_ptr_a4dbf1c0d3ac694fef78baa8d15ec7eb1}\label{class_v_s_ptr_a4dbf1c0d3ac694fef78baa8d15ec7eb1}} 
+\index{V\+S\+Ptr@{V\+S\+Ptr}!New@{New}}
+\index{New@{New}!V\+S\+Ptr@{V\+S\+Ptr}}
+\subsubsection{\texorpdfstring{New()}{New()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ \hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$\+::New (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Método que genera las instancias de los objetos \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. 
+
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 42 of file V\+S\+Ptr.\+cpp.
+
+\mbox{\Hypertarget{class_v_s_ptr_a915f6d6fd3c35bd6409b21f62284087e}\label{class_v_s_ptr_a915f6d6fd3c35bd6409b21f62284087e}} 
+\index{V\+S\+Ptr@{V\+S\+Ptr}!obtenref\+ID@{obtenref\+ID}}
+\index{obtenref\+ID@{obtenref\+ID}!V\+S\+Ptr@{V\+S\+Ptr}}
+\subsubsection{\texorpdfstring{obtenref\+I\+D()}{obtenrefID()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$\+::obtenref\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el ID que se le ha asignado al puntero. 
+
+\begin{DoxyReturn}{Returns}
+reference\+ID 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 88 of file V\+S\+Ptr.\+cpp.
+
+\mbox{\Hypertarget{class_v_s_ptr_a7d3b2ef1c0ef66d6d3f70cfd39549515}\label{class_v_s_ptr_a7d3b2ef1c0ef66d6d3f70cfd39549515}} 
+\index{V\+S\+Ptr@{V\+S\+Ptr}!operator\&@{operator\&}}
+\index{operator\&@{operator\&}!V\+S\+Ptr@{V\+S\+Ptr}}
+\subsubsection{\texorpdfstring{operator\&()}{operator\&()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+T \hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$\+::operator \& (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que sobrecarga el operador \& para lograr acceder al valor almacenado en el objeto \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. 
+
+\begin{DoxyReturn}{Returns}
+El valor al que apunta el puntero dato 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_v_s_ptr_a99bd5070f565cc570d55b441c6d78bda}\label{class_v_s_ptr_a99bd5070f565cc570d55b441c6d78bda}} 
+\index{V\+S\+Ptr@{V\+S\+Ptr}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!V\+S\+Ptr@{V\+S\+Ptr}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ \hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el mismo \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. 
+
+\begin{DoxyReturn}{Returns}
+El mismo \hyperlink{class_v_s_ptr}{V\+S\+Ptr} 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 81 of file V\+S\+Ptr.\+cpp.
+
+\mbox{\Hypertarget{class_v_s_ptr_ae1cdd73e2116e115149e517b4045b7f9}\label{class_v_s_ptr_ae1cdd73e2116e115149e517b4045b7f9}} 
+\index{V\+S\+Ptr@{V\+S\+Ptr}!operator=@{operator=}}
+\index{operator=@{operator=}!V\+S\+Ptr@{V\+S\+Ptr}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{T}]{data }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga el operador = y le asigna data a la dirección de memoria a la que esta apuntando el puntero ptr\+\_\+in. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Dato} & de cualquier tipo (T) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 57 of file V\+S\+Ptr.\+cpp.
+
+\mbox{\Hypertarget{class_v_s_ptr_aa27d1b845423f19aa9403bdd56586ab9}\label{class_v_s_ptr_aa27d1b845423f19aa9403bdd56586ab9}} 
+\index{V\+S\+Ptr@{V\+S\+Ptr}!operator=@{operator=}}
+\index{operator=@{operator=}!V\+S\+Ptr@{V\+S\+Ptr}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Le asigna la direccion de memoria a la que apunta un puntero al segundo puntero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Dato} & tipo \hyperlink{class_v_s_ptr}{V\+S\+Ptr} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 66 of file V\+S\+Ptr.\+cpp.
+
+\mbox{\Hypertarget{class_v_s_ptr_aeef7dd00463ef98da0e338dae756b4d5}\label{class_v_s_ptr_aeef7dd00463ef98da0e338dae756b4d5}} 
+\index{V\+S\+Ptr@{V\+S\+Ptr}!start@{start}}
+\index{start@{start}!V\+S\+Ptr@{V\+S\+Ptr}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa el \hyperlink{class_v_s_ptr}{V\+S\+Ptr}, luego envía la refencia que se le ha asignado y tambien la del puntero ptr\+\_\+in al Garbage Collector. 
+
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 49 of file V\+S\+Ptr.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+V\+S\+Ptr.\+h\item 
+V\+S\+Ptr.\+cpp\end{DoxyCompactItemize}

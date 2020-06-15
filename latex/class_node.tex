@@ -1,0 +1,122 @@
+\hypertarget{class_node}{}\section{Node$<$ T $>$ Class Template Reference}
+\label{class_node}\index{Node$<$ T $>$@{Node$<$ T $>$}}
+
+
+Descripción\+: A continuación se describe la Clase Nodo ligada a la clase \hyperlink{class_linked_list}{Linked\+List} que guarda una referencia al nodo siguiente y el dato que guarda.  
+
+
+
+
+{\ttfamily \#include $<$Node.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_node_a68c5bd839a73a772a935943075121c5c}{Node} (T Data)
+\item 
+T $\ast$ \hyperlink{class_node_a130e6bec4c78a3885b7da48e16ec2764}{get\+Data} ()
+\item 
+void \hyperlink{class_node_afd071a8970cc6eba929456fb1f625cba}{set\+Data} (T Data)
+\item 
+\hyperlink{class_node}{Node}$<$ T $>$ $\ast$ \hyperlink{class_node_a688501032615bbd05c9f42ef89d63db5}{get\+Next} ()
+\item 
+void \hyperlink{class_node_ab0624de0247235dfde00c057b838070e}{set\+Next} (\hyperlink{class_node}{Node}$<$ T $>$ $\ast$Next)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \hyperlink{class_node_ac450c71a8677a38d306361f9ced518d3}{data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Node$<$ T $>$}
+
+Descripción\+: A continuación se describe la Clase Nodo ligada a la clase \hyperlink{class_linked_list}{Linked\+List} que guarda una referencia al nodo siguiente y el dato que guarda. 
+
+15/06/2020 
+
+Definition at line 13 of file Node.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_node_a68c5bd839a73a772a935943075121c5c}\label{class_node_a68c5bd839a73a772a935943075121c5c}} 
+\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection{\texorpdfstring{Node()}{Node()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{class_node}{Node}$<$ T $>$\+::\hyperlink{class_node}{Node} (\begin{DoxyParamCaption}\item[{T}]{Data }\end{DoxyParamCaption})}
+
+Nodo que contiene a data 
+
+Definition at line 5 of file Node.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_node_a130e6bec4c78a3885b7da48e16ec2764}\label{class_node_a130e6bec4c78a3885b7da48e16ec2764}} 
+\index{Node@{Node}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!Node@{Node}}
+\subsubsection{\texorpdfstring{get\+Data()}{getData()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T $\ast$ \hyperlink{class_node}{Node}$<$ T $>$\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Obtiene la data del nodo 
+
+Definition at line 11 of file Node.\+cpp.
+
+\mbox{\Hypertarget{class_node_a688501032615bbd05c9f42ef89d63db5}\label{class_node_a688501032615bbd05c9f42ef89d63db5}} 
+\index{Node@{Node}!get\+Next@{get\+Next}}
+\index{get\+Next@{get\+Next}!Node@{Node}}
+\subsubsection{\texorpdfstring{get\+Next()}{getNext()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_node}{Node}$<$ T $>$ $\ast$ \hyperlink{class_node}{Node}$<$ T $>$\+::get\+Next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Obtiene el siguente nodo del seleccionado 
+
+Definition at line 21 of file Node.\+cpp.
+
+\mbox{\Hypertarget{class_node_afd071a8970cc6eba929456fb1f625cba}\label{class_node_afd071a8970cc6eba929456fb1f625cba}} 
+\index{Node@{Node}!set\+Data@{set\+Data}}
+\index{set\+Data@{set\+Data}!Node@{Node}}
+\subsubsection{\texorpdfstring{set\+Data()}{setData()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \hyperlink{class_node}{Node}$<$ T $>$\+::set\+Data (\begin{DoxyParamCaption}\item[{T}]{Data }\end{DoxyParamCaption})}
+
+Otorga data a un nodo 
+
+Definition at line 16 of file Node.\+cpp.
+
+\mbox{\Hypertarget{class_node_ab0624de0247235dfde00c057b838070e}\label{class_node_ab0624de0247235dfde00c057b838070e}} 
+\index{Node@{Node}!set\+Next@{set\+Next}}
+\index{set\+Next@{set\+Next}!Node@{Node}}
+\subsubsection{\texorpdfstring{set\+Next()}{setNext()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \hyperlink{class_node}{Node}$<$ T $>$\+::set\+Next (\begin{DoxyParamCaption}\item[{\hyperlink{class_node}{Node}$<$ T $>$ $\ast$}]{Next }\end{DoxyParamCaption})}
+
+Coloca un nodo delante del seleccionado 
+
+Definition at line 26 of file Node.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_node_ac450c71a8677a38d306361f9ced518d3}\label{class_node_ac450c71a8677a38d306361f9ced518d3}} 
+\index{Node@{Node}!data@{data}}
+\index{data@{data}!Node@{Node}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+T \hyperlink{class_node}{Node}$<$ T $>$\+::data}
+
+Variable tipo t 
+
+Definition at line 24 of file Node.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Node.\+h\item 
+Node.\+cpp\end{DoxyCompactItemize}

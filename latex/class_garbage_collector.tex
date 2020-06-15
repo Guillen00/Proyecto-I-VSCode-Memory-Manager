@@ -1,0 +1,183 @@
+\hypertarget{class_garbage_collector}{}\section{Garbage\+Collector Class Reference}
+\label{class_garbage_collector}\index{Garbage\+Collector@{Garbage\+Collector}}
+
+
+Clase Singleton que funciona como un Garbage Collector que se encarga de administrar la memoria del programa autom�ticamente.  
+
+
+
+
+{\ttfamily \#include $<$Garbage\+Collector.\+h$>$}
+
+
+
+Inherits Q\+Thread.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_garbage_collector_a89dc88b4cba74aad422464a07f34ccab}\label{class_garbage_collector_a89dc88b4cba74aad422464a07f34ccab}} 
+{\bfseries Garbage\+Collector} (const \hyperlink{class_garbage_collector}{Garbage\+Collector} \&)=delete
+\item 
+\hyperlink{class_garbage_collector_a78b0b35e1b0f76dc688f73cb2b7db86f}{Garbage\+Collector} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de la clase Garbage Collector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_garbage_collector_a27c184268b99ce54d9dc41e0814761d3}{activate\+GC} ()
+\begin{DoxyCompactList}\small\item\em Metodo encargado de activar el thread de la clase. \end{DoxyCompactList}\item 
+static \hyperlink{class_garbage_collector}{Garbage\+Collector} $\ast$ \hyperlink{class_garbage_collector_ade4bccdf41223cc395b646db3f60ac8b}{get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Metodo que inicializa la clase aplicando singleton o devuelve la instancia ya existente. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\static void \hyperlink{class_garbage_collector_abd2b578c51fe5f8634da54c698e3e4dd}{new\+V\+S\+Ptr} (\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ $\ast$, void $\ast$, string)
+\begin{DoxyCompactList}\small\item\em Metodo que ejecutada cada vez que se crea un nuevo \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. \end{DoxyCompactList}\item 
+static int \hyperlink{class_garbage_collector_ae58afa45c7554355f2536229db34613c}{create\+ID} ()
+\begin{DoxyCompactList}\small\item\em Metodo encargado de crear el ID que se le asigna a un nuevo \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\static void \hyperlink{class_garbage_collector_a0e2f7b2ce7b6af3f3b1ee9b52d3d1b01}{clear} (\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ $\ast$, void $\ast$)
+\begin{DoxyCompactList}\small\item\em Metodo que se ejecuta cada vez que se elimina un \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_garbage_collector_a1dddd648ec8351fd37c94e8b477f1971}\label{class_garbage_collector_a1dddd648ec8351fd37c94e8b477f1971}} 
+\hyperlink{class_linked_list}{Linked\+List}$<$ \hyperlink{struct_v_s_pointers}{V\+S\+Pointers} $>$ {\bfseries V\+Sptrs}
+\item 
+\mbox{\Hypertarget{class_garbage_collector_a03fcd944fc7226109c8aa2a8ab96a741}\label{class_garbage_collector_a03fcd944fc7226109c8aa2a8ab96a741}} 
+\hyperlink{class_linked_list}{Linked\+List}$<$ \hyperlink{struct_v_s_data}{V\+S\+Data} $>$ {\bfseries Data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Clase Singleton que funciona como un Garbage Collector que se encarga de administrar la memoria del programa autom�ticamente. 
+
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 15 of file Garbage\+Collector.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_garbage_collector_a78b0b35e1b0f76dc688f73cb2b7db86f}\label{class_garbage_collector_a78b0b35e1b0f76dc688f73cb2b7db86f}} 
+\index{Garbage\+Collector@{Garbage\+Collector}!Garbage\+Collector@{Garbage\+Collector}}
+\index{Garbage\+Collector@{Garbage\+Collector}!Garbage\+Collector@{Garbage\+Collector}}
+\subsubsection{\texorpdfstring{Garbage\+Collector()}{GarbageCollector()}}
+{\footnotesize\ttfamily Garbage\+Collector\+::\+Garbage\+Collector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor por defecto de la clase Garbage Collector. 
+
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 17 of file Garbage\+Collector.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_garbage_collector_a27c184268b99ce54d9dc41e0814761d3}\label{class_garbage_collector_a27c184268b99ce54d9dc41e0814761d3}} 
+\index{Garbage\+Collector@{Garbage\+Collector}!activate\+GC@{activate\+GC}}
+\index{activate\+GC@{activate\+GC}!Garbage\+Collector@{Garbage\+Collector}}
+\subsubsection{\texorpdfstring{activate\+G\+C()}{activateGC()}}
+{\footnotesize\ttfamily void Garbage\+Collector\+::activate\+GC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Metodo encargado de activar el thread de la clase. 
+
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 21 of file Garbage\+Collector.\+cpp.
+
+\mbox{\Hypertarget{class_garbage_collector_a0e2f7b2ce7b6af3f3b1ee9b52d3d1b01}\label{class_garbage_collector_a0e2f7b2ce7b6af3f3b1ee9b52d3d1b01}} 
+\index{Garbage\+Collector@{Garbage\+Collector}!clear@{clear}}
+\index{clear@{clear}!Garbage\+Collector@{Garbage\+Collector}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void Garbage\+Collector\+::clear (\begin{DoxyParamCaption}\item[{\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ $\ast$}]{V\+S\+Ptr\+Dir,  }\item[{void $\ast$}]{dato\+T\+Dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Metodo que se ejecuta cada vez que se elimina un \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em La} & direccion de memoria de donde se almacena el \hyperlink{class_v_s_ptr}{V\+S\+Ptr} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 268 of file Garbage\+Collector.\+cpp.
+
+\mbox{\Hypertarget{class_garbage_collector_ae58afa45c7554355f2536229db34613c}\label{class_garbage_collector_ae58afa45c7554355f2536229db34613c}} 
+\index{Garbage\+Collector@{Garbage\+Collector}!create\+ID@{create\+ID}}
+\index{create\+ID@{create\+ID}!Garbage\+Collector@{Garbage\+Collector}}
+\subsubsection{\texorpdfstring{create\+I\+D()}{createID()}}
+{\footnotesize\ttfamily int Garbage\+Collector\+::create\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Metodo encargado de crear el ID que se le asigna a un nuevo \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. 
+
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 260 of file Garbage\+Collector.\+cpp.
+
+\mbox{\Hypertarget{class_garbage_collector_ade4bccdf41223cc395b646db3f60ac8b}\label{class_garbage_collector_ade4bccdf41223cc395b646db3f60ac8b}} 
+\index{Garbage\+Collector@{Garbage\+Collector}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Garbage\+Collector@{Garbage\+Collector}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily \hyperlink{class_garbage_collector}{Garbage\+Collector} $\ast$ Garbage\+Collector\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Metodo que inicializa la clase aplicando singleton o devuelve la instancia ya existente. 
+
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 223 of file Garbage\+Collector.\+cpp.
+
+\mbox{\Hypertarget{class_garbage_collector_abd2b578c51fe5f8634da54c698e3e4dd}\label{class_garbage_collector_abd2b578c51fe5f8634da54c698e3e4dd}} 
+\index{Garbage\+Collector@{Garbage\+Collector}!new\+V\+S\+Ptr@{new\+V\+S\+Ptr}}
+\index{new\+V\+S\+Ptr@{new\+V\+S\+Ptr}!Garbage\+Collector@{Garbage\+Collector}}
+\subsubsection{\texorpdfstring{new\+V\+S\+Ptr()}{newVSPtr()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void Garbage\+Collector\+::new\+V\+S\+Ptr (\begin{DoxyParamCaption}\item[{\hyperlink{class_v_s_ptr}{V\+S\+Ptr}$<$ T $>$ $\ast$}]{V\+S\+Ptr\+Dir,  }\item[{void $\ast$}]{dato\+T\+Dir,  }\item[{string}]{tipodato }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Metodo que ejecutada cada vez que se crea un nuevo \hyperlink{class_v_s_ptr}{V\+S\+Ptr}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Direccion} & de memoria del objeto \hyperlink{class_v_s_ptr}{V\+S\+Ptr} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Leonardo\+\_\+\+Juan\+Pablo 
+\end{DoxyAuthor}
+
+
+Definition at line 229 of file Garbage\+Collector.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Garbage\+Collector.\+h\item 
+Garbage\+Collector.\+cpp\end{DoxyCompactItemize}
