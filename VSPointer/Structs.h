@@ -5,6 +5,10 @@
 #include "VSPtr.h"
 struct VSPointers
 {
+    ///
+    ///@brief Estructura para almacenar los datos de los punteros
+    ///@author Leonardo_JuanPablo
+    ///
     VSPtr<void*>* dir;
     void* dato;
     int ID;
