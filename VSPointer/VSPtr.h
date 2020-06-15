@@ -2,8 +2,10 @@
 #define VSPOINTER_H
 
 #include "VSPtr_global.h"
-#include <QtNetwork/QSctpSocket>
-#include <QAbstractSocket>
+//#include <QtNetwork/QSctpSocket>
+#include <QtNetwork/qsctpsocket.h>
+//#include <QAbstractSocket>
+#include <qabstractsocket.h>
 #include "ventana.h"
 #include "clientesocket.h"
 //#include "VSPtr.cpp"

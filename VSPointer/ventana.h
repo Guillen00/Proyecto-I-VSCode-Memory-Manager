@@ -1,7 +1,8 @@
 #ifndef VENTANA_H
 #define VENTANA_H
 
-#include <QMainWindow>
+//#include <QMainWindow>
+#include <qmainwindow.h>
 
 
 namespace Ui {
@@ -23,6 +24,7 @@ public:
     QString Password;
     QString NewPassword;
     QString Passwordconvert(QString password);
+    void insertTable();
 
 protected:
     void closeEvent(QCloseEvent *event) override;

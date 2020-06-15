@@ -1,8 +1,8 @@
 ﻿#ifndef CLIENTESOCKET_H
 #define CLIENTESOCKET_H
 
-#include <QTcpSocket>
-
+//#include <QTcpSocket>
+#include "qtcpsocket.h"
 
 class ClienteSocket : public QTcpSocket
 {

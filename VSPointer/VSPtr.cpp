@@ -7,8 +7,6 @@
 #include <string>
 #include <memory>
 #include "GarbageCollector.cpp"
-//#include "linkedlist.h"
-//#include "Structs.h"
 
 using namespace std;
 

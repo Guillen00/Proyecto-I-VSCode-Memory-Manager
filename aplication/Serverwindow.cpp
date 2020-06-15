@@ -1,7 +1,7 @@
 #include "Serverwindow.h"
 #include "ui_Serverwindow.h"
 #include "servidorsocket.h"
-#include "enumeraciones1.h"
+/*#include "enumeraciones1.h"
 #include <VSPtr.h>
 
 Serverwindow::Serverwindow(QWidget *parent) :
@@ -66,3 +66,4 @@ ServidorSocket *Serverwindow::makeServidor()
 
     return servidor;
 }
+*/

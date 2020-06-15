@@ -5,12 +5,14 @@
 #pragma once
 #include "linkedlist.cpp"
 #include "Structs.h"
+//#include "QThread"
+#include "qthread.h"
 
 ///
 /// @brief Clase Singleton que funciona como un Garbage Collector que se encarga de administrar la memoria del programa autom�ticamente
 /// @author Leonardo_JuanPablo
 ///
-class GarbageCollector{
+class GarbageCollector :public QThread{
 
 public:
 
@@ -49,22 +51,24 @@ public:
 
     GarbageCollector(const GarbageCollector&) = delete;
 
-private:
-
-
     LinkedList<VSPointers> VSptrs;
 
     LinkedList<VSData> Data;
-
-    int referenceID; //IDref
-
-    bool state = false;
-
     ///
     /// @brief Constructor por defecto de la clase Garbage Collector
     /// @author Leonardo_JuanPablo
     ///
     GarbageCollector();
+private:
+
+
+
+
+    int referenceID; //IDref
+
+    bool state = false;
+
+
 
     ///
     /// @brief Implemetacion de activateGC

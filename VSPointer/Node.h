@@ -13,11 +13,11 @@ class Node
 {
 private:
 
-    T data;
+
     Node<T> *next;
 
 public:
-
+    T data;
     Node(T Data);
     T* getData();
     void setData(T Data);

@@ -1,5 +1,6 @@
 #include "linkedlist.h"
-
+#include "iostream"
+using namespace std;
 
 template<class T>
 LinkedList<T> :: LinkedList()
@@ -177,16 +178,16 @@ void LinkedList<T> :: deleteByData(T data){
 template<class T>
 void LinkedList<T> :: printList() {
     if (head==NULL){
-        std::cout <<"null list";
+        cout <<"null list"<<endl;
     }else{
         Node<T> *current = head;
-        std::cout <<"LinkedList: ";
+        cout <<"LinkedList: ";
 
         while (current != NULL) {
-            std::cout<< current->getData()<<" ";
+            cout<< current->getData()<<" ";
             current = current->getNext();
         }
-        std::cout<<"\n";
+        cout<<"\n";
     }
 }
 

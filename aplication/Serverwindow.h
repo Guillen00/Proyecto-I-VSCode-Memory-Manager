@@ -1,4 +1,4 @@
-#ifndef SERVERWINDOW_H
+/*#ifndef SERVERWINDOW_H
 #define SERVERWINDOW_H
 
 #include <QMainWindow>
@@ -33,3 +33,4 @@ private:
 };
 
 #endif // SERVERWINDOW_H
+*/

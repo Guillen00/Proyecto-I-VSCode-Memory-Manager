@@ -1,11 +1,11 @@
-#ifndef SERVIDORSOCKET_H
+/*#ifndef SERVIDORSOCKET_H
 #define SERVIDORSOCKET_H
 
 #include"VSPtr.h"
 #include <QtNetwork/QSctpServer>
 
 //#include "qtcpserver.h"
-//class ClienteSocket;
+class ClienteSocket;
 
 class ServidorSocket : public QTcpServer
 {
@@ -38,3 +38,4 @@ private:
 };
 
 #endif // SERVIDORSOCKET_H
+*/

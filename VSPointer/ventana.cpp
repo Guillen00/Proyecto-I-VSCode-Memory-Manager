@@ -3,13 +3,31 @@
 #include <QDebug>
 #include "enumeraciones.h"
 #include "clientesocket.h"
-
+#include "Node.h"
+#include "GarbageCollector.h"
 #include <QCryptographicHash>
+#include "linkedlist.h"
+
+GarbageCollector *garbage = new GarbageCollector;
+LinkedList<VSPointers> *linkedlist = new LinkedList<VSPointers>;
+
+void ventana::insertTable(){
+   //VSPointers pointer = garbage-
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,new QTableWidgetItem("pointer->ID"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,new QTableWidgetItem("segundo"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,new QTableWidgetItem("tercero"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,3,new QTableWidgetItem("cuarto"));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,4,new QTableWidgetItem("quinto"));
+
+
+}
 
 ventana::ventana(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ventana)
 {
+
     ui->setupUi(this);
     mClienteSocket = makeSocket();
     ui->tableWidget->setColumnCount(5);
@@ -22,6 +40,9 @@ ventana::ventana(QWidget *parent) :
     ui->tableWidget->setColumnWidth(2,150);
     ui->tableWidget->setColumnWidth(3,91);
     ui->tableWidget->setColumnWidth(4,460);
+
+    //iniciar agregando los datos a la tabla
+
 
 
 
@@ -39,6 +60,7 @@ void ventana::closeEvent(QCloseEvent *event){
 
 void ventana::on_Conectar_clicked()
 {
+    insertTable();
 
     if(Passwordconvert(Password)==Passwordconvert(ui->lineEdit_3->text())){
 
@@ -68,7 +90,7 @@ void ventana::on_Conectar_clicked()
         mClienteSocket->enviaMensaje(InfoQuery, ui->lineEdit_3->text());
     }
     else{
-        ui->label_7->setText("La contraseña es incorrecta");
+        ui->label_7->setText("La contraseña u otro dato es incorrecta");
     }
 
 
@@ -108,3 +130,5 @@ QString ventana::Passwordconvert(QString password){
     Passwordmd5.addData(input);
     return Passwordmd5.result().toHex();
 }
+
+

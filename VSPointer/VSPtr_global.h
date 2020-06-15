@@ -1,7 +1,7 @@
 #ifndef VSPOINTER_GLOBAL_H
 #define VSPOINTER_GLOBAL_H
 
-#include <QtCore/qglobal.h>
+//#include <QtCore/qglobal.h>
 #include <QtNetwork/QSctpSocket>
 
 #if defined(VSPOINTER_LIBRARY)

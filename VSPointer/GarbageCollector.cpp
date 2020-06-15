@@ -1,20 +1,13 @@
 #include "GarbageCollector.h"
-
+#include "linkedlist.h"
 #include <pthread.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <future>
 #include <typeinfo>
 #include <vector>
-//#include <sys/socket.h>
-//#include <sys/types.h>
-//#include <netdb.h>
-//#include <arpa/inet.h>
-//#include <string.h>
 #include <string>
 #include <stdio.h>
-
-//#include <limits.h>
 
 
 
@@ -256,9 +249,11 @@ void GarbageCollector :: newVSPtrImple(VSPtr<T>* VSPtrDir,void* datoTDir,string 
         NVariable.refs = 1;
         NVariable.tipo = tipodato;
         getInstance()->Data.insertFirst(NVariable);
+        getInstance()->Data.printList();
     }else{
         PtrData->refs++;
-        std::cout<< "Las referencias activas de: "<<PtrData->dir << " aumentaron a: "<< PtrData->refs<< std::endl;
+        getInstance()->Data.printList();
+        cout<< "Las referencias activas de: "<<PtrData->dir << " aumentaron a: "<< PtrData->refs<< endl;
     }
 }
 
@@ -277,6 +272,7 @@ void GarbageCollector :: clear(VSPtr<T>* VSPtrDir,void* datoTDir){
 
 template <class T>
 void GarbageCollector :: clearImple(VSPtr<T>* VSPTrDir,void* datoTDir){
+
 
     //Borra el vsptr de la lista de VsPtrs
     int PtrDataPos = searchInVSPtrs(VSPTrDir);

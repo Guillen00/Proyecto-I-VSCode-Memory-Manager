@@ -1,4 +1,4 @@
-#include "servidorsocket.h"
+/*#include "servidorsocket.h"
 #include "VSPtr.h"
 
 ServidorSocket::ServidorSocket(QObject *parent) : QTcpServer { parent }
@@ -81,3 +81,4 @@ ClienteSocket *ServidorSocket::makeCliente(qintptr handle)
 
     return cliente;
 }
+*/

@@ -1,4 +1,4 @@
-#include "Serverwindow.h"
+//#include "Serverwindow.h"
 #include <VSPtr.h>
 #include <QApplication>
 #include <VSPtr.cpp>
@@ -7,10 +7,10 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Serverwindow yiyi;
+   // Serverwindow yiyi;
     ventana ven;
     //yiyi.show();
-    //ven.show();
+    ven.show();
     VSPtr<int> myPtr = VSPtr<int>::New();
     VSPtr<int> myPtr2 = VSPtr<int>::New();
     *myPtr = 5;
